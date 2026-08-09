@@ -597,6 +597,7 @@ header.header {
   gap: 1.25rem;
   transition: all var(--transition-fast);
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  min-width: 0;
 }
 
 .candidate-card:hover {
@@ -657,6 +658,9 @@ header.header {
 
 .candidate-info {
   flex-grow: 1;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .candidate-name {
@@ -679,39 +683,40 @@ header.header {
   margin-top: 0.15rem;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 767px) {
   .candidate-grid {
-    gap: 0.6rem;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
   }
   .candidate-card {
-    padding: 0.85rem 0.75rem;
-    gap: 0.6rem;
+    padding: 0.75rem 0.6rem !important;
+    gap: 0.5rem !important;
   }
   .candidate-num {
-    width: 34px;
-    height: 34px;
-    font-size: 1.2rem;
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 1.1rem !important;
   }
   .candidate-name {
-    font-size: 1.15rem;
+    font-size: 1.05rem !important;
   }
   .candidate-meta {
-    font-size: 0.825rem;
+    font-size: 0.78rem !important;
   }
   .candidate-submeta {
-    font-size: 0.725rem;
+    font-size: 0.7rem !important;
   }
   .candidate-card.leader-card {
-    padding: 1.25rem 1rem;
-    gap: 1rem;
+    padding: 1.25rem 1rem !important;
+    gap: 1rem !important;
   }
   .leader-card .candidate-num {
-    width: 50px;
-    height: 50px;
-    font-size: 2.2rem;
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 2.2rem !important;
   }
   .leader-card .candidate-name {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
   }
 }
 
@@ -928,25 +933,6 @@ footer.footer {
 
   h2 {
     font-size: 1.75rem !important;
-  }
-
-  .candidate-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem;
-  }
-
-  .candidate-card {
-    padding: 1rem;
-  }
-
-  .candidate-num {
-    font-size: 1.5rem;
-    width: 36px;
-    height: 36px;
-  }
-
-  .candidate-name {
-    font-size: 1.15rem;
   }
 
   .countdown-container {
