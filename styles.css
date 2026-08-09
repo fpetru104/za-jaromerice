@@ -197,12 +197,12 @@ header.header {
   position: relative;
   display: block;
   width: 100%;
-  height: 20px;
+  height: 10px;
 }
 
 @media (min-width: 768px) {
   .header-wave svg {
-    height: 30px;
+    height: 14px;
   }
 }
 
