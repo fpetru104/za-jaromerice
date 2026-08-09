@@ -381,9 +381,16 @@ header.header {
   padding: 1.5rem 0 4.5rem;
 }
 
+#program {
+  padding: 1.5rem 0 4rem;
+}
+
 @media (min-width: 768px) {
   #odpocet {
     padding: 2rem 0 5.5rem;
+  }
+  #program {
+    padding: 2rem 0 5rem;
   }
 }
 
