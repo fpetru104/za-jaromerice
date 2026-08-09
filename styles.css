@@ -56,8 +56,9 @@ html {
   }
 }
 
-body {
+html, body {
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 /* Typography & Utilities */
@@ -1108,14 +1109,14 @@ footer.footer {
   .hero-logo-box {
     max-width: 100% !important;
     width: 100% !important;
-    margin: -3.5rem auto -3.8rem !important;
+    margin: -2.8rem auto -3rem !important;
   }
 
   .hero-logo-large,
   .hero-logo-large:hover {
     transform: none !important;
-    max-width: 440px !important;
-    width: 112% !important;
+    max-width: 380px !important;
+    width: 100% !important;
     margin: 0 auto !important;
   }
 
