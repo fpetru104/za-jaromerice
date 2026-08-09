@@ -352,18 +352,19 @@ header.header {
   color: var(--color-white);
   margin-top: 0.25rem;
   margin-bottom: 1.25rem;
-  line-height: 1.2;
+  line-height: 1.05;
 }
 
 .hero-title .highlight-box {
   position: relative;
   display: inline-block;
   color: var(--color-white);
-  padding: 0.1em 0.45em;
-  margin-bottom: 0.2em;
+  padding: 0.05em 0.35em 0.1em 0.35em;
+  margin-bottom: 0.1em;
   z-index: 1;
   text-shadow: none;
   border-radius: 4px;
+  line-height: 1.1;
   animation: textToBlack 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
 }
 
@@ -382,7 +383,7 @@ header.header {
 
 .hero-title-sub {
   display: inline-block;
-  margin-top: 0.2em;
+  margin-top: 0.1em;
   text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
 }
 
