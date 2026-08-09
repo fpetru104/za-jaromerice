@@ -996,6 +996,53 @@ header.header {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
+/* Voting Guide Card */
+.voting-guide-card {
+  background-color: var(--color-dark-card);
+  border: 2px solid var(--color-white);
+  padding: 2.5rem;
+  border-radius: 8px;
+  margin-top: 2.5rem;
+  text-align: left;
+}
+
+.voting-guide-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.voting-box-icon {
+  font-family: var(--font-heading);
+  font-size: 3.2rem;
+  line-height: 1;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  width: 68px;
+  height: 68px;
+  border-radius: 8px;
+  border: 3px solid var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.voting-guide-title {
+  font-size: 2rem;
+  color: var(--color-white);
+  margin: 0;
+}
+
+.voting-guide-text {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* Footer */
 footer.footer {
   background-color: var(--color-black);
@@ -1100,6 +1147,30 @@ footer.footer {
     font-size: 1.3rem !important;
     letter-spacing: 0.02em;
     white-space: nowrap;
+  }
+
+  .voting-guide-card {
+    padding: 1.5rem 1.25rem;
+  }
+  
+  .voting-guide-header {
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .voting-guide-title {
+    font-size: 1.5rem;
+  }
+
+  .voting-box-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 2.6rem;
+  }
+
+  .voting-guide-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
 
   .hero {
