@@ -779,7 +779,7 @@ header.header {
 }
 
 .leader-card .candidate-meta {
-  color: var(--color-gray-mid);
+  color: var(--color-white);
   font-size: 1.1rem;
 }
 
@@ -815,7 +815,7 @@ header.header {
 
 .candidate-meta {
   font-size: 0.95rem;
-  color: #111;
+  color: var(--color-gray-dark, #3a3a3c);
   font-weight: 700;
   margin-top: 0.2rem;
 }
