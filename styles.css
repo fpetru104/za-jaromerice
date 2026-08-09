@@ -381,7 +381,8 @@ header.header {
   padding: 1.5rem 0 4.5rem;
 }
 
-#program {
+#program,
+#jak-hlasovat {
   padding: 1.5rem 0 4rem;
 }
 
@@ -389,7 +390,8 @@ header.header {
   #odpocet {
     padding: 2rem 0 5.5rem;
   }
-  #program {
+  #program,
+  #jak-hlasovat {
     padding: 2rem 0 5rem;
   }
 }
@@ -424,13 +426,27 @@ header.header {
   text-decoration: none;
 }
 
-.hero-logo-large {
+.hero-logo-box {
   max-width: 650px;
   width: 100%;
   margin: -7.5rem auto -8rem;
   display: block;
-  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 60px rgba(255, 255, 255, 0.2));
   animation: logoReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards, logoPulse 4s ease-in-out 1.2s infinite alternate;
+}
+
+.hero-logo-large {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 60px rgba(255, 255, 255, 0.2));
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  transform-origin: center center;
+}
+
+.hero-logo-large:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.75)) drop-shadow(0 0 95px rgba(255, 255, 255, 0.45));
 }
 
 @keyframes logoReveal {
@@ -773,15 +789,21 @@ header.header {
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  transition: all var(--transition-fast);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   min-width: 0;
 }
 
 .candidate-card:hover {
+  border-color: var(--color-gray-light);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+}
+
+.candidate-card.leader-card:hover {
   border-color: var(--color-black);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
 }
 
 .candidate-card.leader-card {
@@ -1042,12 +1064,16 @@ footer.footer {
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.candidate-card.is-visible {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Mobile Nav Toggle */
@@ -1076,7 +1102,7 @@ footer.footer {
     padding: 0.25rem 0 2.5rem;
   }
 
-  .hero-logo-large {
+  .hero-logo-box {
     max-width: 100% !important;
     width: 100% !important;
     margin: -2.5rem auto -2rem !important;
