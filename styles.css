@@ -324,6 +324,11 @@ header.header {
   background-color: var(--color-black);
 }
 
+.hero,
+#home {
+  scroll-margin-top: 0 !important;
+}
+
 .hero-wave,
 .section-wave {
   position: absolute;
@@ -361,6 +366,15 @@ header.header {
 
 .wave-fill-dark {
   fill: var(--color-black, #080808);
+}
+
+.wave-fill-dark-gray {
+  fill: var(--color-dark-card, #1c1c1e);
+}
+
+.theme-dark-gray {
+  background-color: var(--color-dark-card, #1c1c1e);
+  color: var(--color-white);
 }
 
 .hero-bg {
