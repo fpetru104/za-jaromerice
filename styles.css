@@ -58,10 +58,14 @@ html {
   }
 }
 
-html,
+html {
+  overflow-x: clip;
+}
+
 body {
   overflow-x: hidden;
   max-width: 100%;
+  position: relative;
 }
 
 /* Typography & Utilities */
