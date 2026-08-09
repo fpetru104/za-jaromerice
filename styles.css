@@ -103,11 +103,13 @@ img {
   padding: 5rem 0;
   position: relative;
   overflow: hidden;
+  scroll-margin-top: 80px;
 }
 
 @media (min-width: 768px) {
   .section {
     padding: 7rem 0;
+    scroll-margin-top: 90px;
   }
 }
 
