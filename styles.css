@@ -180,7 +180,6 @@ header.header {
   background-color: #080808;
   border-bottom: none;
   transition: all var(--transition-fast);
-  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.85));
 }
 
 .header-wave {
