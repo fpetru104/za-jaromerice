@@ -180,6 +180,7 @@ header.header {
   background-color: #080808;
   border-bottom: none;
   transition: all var(--transition-fast);
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.85));
 }
 
 .header-wave {
@@ -450,7 +451,7 @@ header.header {
 .hero-logo-box {
   max-width: 650px;
   width: 100%;
-  margin: -7.5rem auto -8rem;
+  margin: -3.5rem auto -7.5rem;
   display: block;
   animation: logoReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards, logoPulse 4s ease-in-out 1.2s infinite alternate;
 }
