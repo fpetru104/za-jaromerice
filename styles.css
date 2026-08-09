@@ -1206,13 +1206,13 @@ footer.footer {
   }
 
   .hero {
-    padding: 0.25rem 0 2.5rem;
+    padding: 4.5rem 0 2.5rem !important;
   }
 
   .hero-logo-box {
     max-width: 100% !important;
     width: 100% !important;
-    margin: -2.8rem auto -3rem !important;
+    margin: 0.5rem auto -2.5rem !important;
   }
 
   .hero-logo-large,
