@@ -284,7 +284,7 @@ header.header {
 /* Hero Section */
 .hero {
   min-height: auto;
-  padding: 2.5rem 0 3.5rem;
+  padding: 1.25rem 0 3.5rem;
   position: relative;
   display: flex;
   align-items: center;
@@ -318,9 +318,9 @@ header.header {
 }
 
 .hero-logo-large {
-  max-width: 310px;
-  width: 45%;
-  margin: 0 auto 1.5rem;
+  max-width: 680px;
+  width: 100%;
+  margin: -5.5rem auto -5.5rem;
   display: block;
   filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 60px rgba(255, 255, 255, 0.2));
   animation: logoPulse 4s ease-in-out infinite alternate;
@@ -350,21 +350,22 @@ header.header {
 .hero-title {
   font-size: clamp(2.5rem, 6vw + 0.5rem, 4.8rem);
   color: var(--color-white);
-  margin-top: 0.25rem;
+  margin-top: 0;
   margin-bottom: 1.25rem;
-  line-height: 1.05;
+  line-height: 1.15;
 }
 
 .hero-title .highlight-box {
   position: relative;
   display: inline-block;
   color: var(--color-white);
-  padding: 0.05em 0.35em 0.1em 0.35em;
-  margin-bottom: 0.1em;
+  font-size: 1.25em;
+  padding: 0.18em 0.45em 0.1em 0.45em;
+  margin-bottom: 0.15em;
   z-index: 1;
   text-shadow: none;
   border-radius: 4px;
-  line-height: 1.1;
+  line-height: 1.15;
   animation: textToBlack 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
 }
 
@@ -383,7 +384,7 @@ header.header {
 
 .hero-title-sub {
   display: inline-block;
-  margin-top: 0.1em;
+  margin-top: 0.15em;
   text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
 }
 
@@ -944,13 +945,13 @@ footer.footer {
   }
 
   .hero {
-    padding: 1.75rem 0 2.5rem;
+    padding: 0.5rem 0 2.5rem;
   }
 
   .hero-logo-large {
-    max-width: 280px;
-    width: 85%;
-    margin: 0 auto 1rem;
+    max-width: 480px;
+    width: 100%;
+    margin: -3.5rem auto -3.5rem;
   }
 
   .hero-title {
@@ -960,7 +961,8 @@ footer.footer {
   }
 
   .hero-title .highlight-box {
-    padding: 0.08em 0.35em;
+    font-size: 1.15em;
+    padding: 0.15em 0.35em 0.08em 0.35em;
   }
 
   .hero-lead {
