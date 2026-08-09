@@ -377,6 +377,16 @@ header.header {
   color: var(--color-white);
 }
 
+#odpocet {
+  padding: 1.5rem 0 4.5rem;
+}
+
+@media (min-width: 768px) {
+  #odpocet {
+    padding: 2rem 0 5.5rem;
+  }
+}
+
 .hero-bg {
   position: absolute;
   inset: 0;
