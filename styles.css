@@ -58,12 +58,9 @@ html {
   }
 }
 
-html {
-  overflow-x: clip;
-}
-
+html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
   position: relative;
 }
@@ -175,9 +172,11 @@ img {
 
 /* Header & Navigation */
 header.header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   background-color: #080808;
   border-bottom: none;
   transition: all var(--transition-fast);
