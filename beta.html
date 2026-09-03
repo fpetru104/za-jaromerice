@@ -35,9 +35,206 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css?v=1.8.1">
+
+  <!-- Beta Access Fast Check -->
+  <script>
+    if (sessionStorage.getItem('beta_authenticated') === 'true') {
+      document.documentElement.classList.add('beta-unlocked');
+    }
+  </script>
+
+  <style>
+    /* Beta Protection Lockscreen */
+    html:not(.beta-unlocked),
+    html:not(.beta-unlocked) body {
+      overflow: hidden !important;
+      height: 100vh !important;
+    }
+
+    #beta-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      background: radial-gradient(circle at center, #1c1c1e 0%, #080808 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .beta-gate-box {
+      width: 100%;
+      max-width: 440px;
+      background-color: #121212;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+    }
+
+    .beta-gate-logo {
+      height: 48px;
+      margin: 0 auto 1.25rem;
+      display: block;
+    }
+
+    .beta-gate-badge {
+      display: inline-block;
+      font-family: var(--font-mono, monospace);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 0.85rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .beta-gate-title {
+      font-family: var(--font-heading, sans-serif);
+      font-size: 1.6rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .beta-gate-desc {
+      color: #a1a1a6;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1.75rem;
+    }
+
+    .beta-gate-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .beta-gate-input {
+      width: 100%;
+      padding: 0.9rem 1.25rem;
+      font-size: 1rem;
+      background: #1c1c1e;
+      border: 1px solid #3a3a3c;
+      border-radius: 6px;
+      color: #fff;
+      outline: none;
+      text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .beta-gate-input:focus {
+      border-color: #fff;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+    }
+
+    .beta-gate-btn {
+      width: 100%;
+      padding: 0.9rem 1.25rem;
+      font-family: var(--font-heading, sans-serif);
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+      background: #fff;
+      color: #080808;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .beta-gate-btn:hover {
+      background: #e5e5ea;
+      transform: translateY(-2px);
+    }
+
+    .beta-gate-error {
+      color: #ff453a;
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+
+    .beta-unlocked #beta-gate {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Floating Lock / Status badge on unlocked beta */
+    .beta-unlocked-badge {
+      display: none;
+    }
+
+    .beta-unlocked .beta-unlocked-badge {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      z-index: 9999;
+      background: rgba(18, 18, 18, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem;
+      font-family: var(--font-mono, monospace);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+    }
+
+    .beta-lock-btn {
+      background: none;
+      border: none;
+      color: #a1a1a6;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+      font-size: 0.72rem;
+    }
+
+    .beta-lock-btn:hover {
+      color: #fff;
+    }
+  </style>
 </head>
 
 <body>
+
+  <!-- Beta Access Gate Modal -->
+  <div id="beta-gate">
+    <div class="beta-gate-box">
+      <h1 class="beta-gate-title">BETA VERZE WEBU</h1>
+      <p class="beta-gate-desc">
+        Tato verze stránek je v přípravě a je přístupná pouze po zadání hesla.
+      </p>
+
+      <form class="beta-gate-form" id="beta-form" onsubmit="event.preventDefault(); checkBetaPassword();">
+        <input type="password" id="beta-pass" class="beta-gate-input" placeholder="Zadejte heslo..." autofocus required autocomplete="current-password">
+        <button type="submit" class="beta-gate-btn">Odemknout web</button>
+        <div class="beta-gate-error" id="beta-error">Nesprávné heslo. Zkuste to znovu.</div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Beta Floating Badge -->
+  <div class="beta-unlocked-badge">
+    <span>🔒 BETA REŽIM</span>
+    <span>•</span>
+    <button type="button" class="beta-lock-btn" onclick="lockBeta();">Zamknout</button>
+  </div>
 
   <!-- Centered Compact Header -->
   <header class="header">
@@ -563,6 +760,35 @@
 
   <!-- Scripts -->
   <script src="script.js"></script>
+
+  <!-- Beta Authentication Script -->
+  <script>
+    function checkBetaPassword() {
+      const input = document.getElementById('beta-pass');
+      const error = document.getElementById('beta-error');
+      if (input && input.value.trim() === 'jaromerice2026') {
+        sessionStorage.setItem('beta_authenticated', 'true');
+        document.documentElement.classList.add('beta-unlocked');
+        if (error) error.style.display = 'none';
+      } else {
+        if (error) error.style.display = 'block';
+        if (input) {
+          input.value = '';
+          input.focus();
+        }
+      }
+    }
+
+    function lockBeta() {
+      sessionStorage.removeItem('beta_authenticated');
+      document.documentElement.classList.remove('beta-unlocked');
+      const pass = document.getElementById('beta-pass');
+      if (pass) {
+        pass.value = '';
+        pass.focus();
+      }
+    }
+  </script>
 </body>
 
 </html>
