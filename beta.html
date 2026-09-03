@@ -168,46 +168,6 @@
       visibility: hidden;
       pointer-events: none;
     }
-
-    /* Floating Lock / Status badge on unlocked beta */
-    .beta-unlocked-badge {
-      display: none;
-    }
-
-    .beta-unlocked .beta-unlocked-badge {
-      position: fixed;
-      bottom: 1.25rem;
-      right: 1.25rem;
-      z-index: 9999;
-      background: rgba(18, 18, 18, 0.92);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 999px;
-      padding: 0.45rem 0.9rem;
-      font-family: var(--font-mono, monospace);
-      font-size: 0.72rem;
-      letter-spacing: 0.05em;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
-    }
-
-    .beta-lock-btn {
-      background: none;
-      border: none;
-      color: #a1a1a6;
-      cursor: pointer;
-      padding: 0;
-      text-decoration: underline;
-      font-size: 0.72rem;
-    }
-
-    .beta-lock-btn:hover {
-      color: #fff;
-    }
   </style>
 </head>
 
@@ -227,13 +187,6 @@
         <div class="beta-gate-error" id="beta-error">Nesprávné heslo. Zkuste to znovu.</div>
       </form>
     </div>
-  </div>
-
-  <!-- Beta Floating Badge -->
-  <div class="beta-unlocked-badge">
-    <span>🔒 BETA REŽIM</span>
-    <span>•</span>
-    <button type="button" class="beta-lock-btn" onclick="lockBeta();">Zamknout</button>
   </div>
 
   <!-- Centered Compact Header -->
@@ -776,16 +729,6 @@
           input.value = '';
           input.focus();
         }
-      }
-    }
-
-    function lockBeta() {
-      sessionStorage.removeItem('beta_authenticated');
-      document.documentElement.classList.remove('beta-unlocked');
-      const pass = document.getElementById('beta-pass');
-      if (pass) {
-        pass.value = '';
-        pass.focus();
       }
     }
   </script>
