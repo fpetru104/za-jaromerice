@@ -978,46 +978,24 @@ header.header {
 .candidate-card {
   background-color: var(--color-white);
   border: 1px solid var(--color-gray-light);
-  padding: 1.25rem 1.4rem;
-  border-radius: 8px;
+  padding: 1.35rem 1.5rem;
+  border-radius: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
   text-align: left;
-  gap: 1.25rem;
+  gap: 1.35rem;
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   min-width: 0;
 }
 
-/* Střídání šachovnice: 1. černá (lídryně), další střídavě světle šedá a bílá */
-.candidate-card:nth-child(even) {
-  background-color: #f0f0f2;
-}
 
-.candidate-card:nth-child(odd) {
-  background-color: var(--color-white);
-}
 
 .candidate-card:hover {
   border-color: var(--color-gray-light);
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.14);
-}
-
-/* Lídryně (č. 1) */
-.candidate-card.leader-card,
-.candidate-card:first-child {
-  background-color: #1c1c1e !important;
-  color: var(--color-white) !important;
-  border-color: #2c2c2e !important;
-  grid-column: auto !important;
-}
-
-.candidate-card.leader-card:hover {
-  border-color: rgba(255, 255, 255, 0.4) !important;
-  transform: translateY(-3px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45) !important;
 }
 
 /* Photo & Visual Container */
@@ -1038,39 +1016,18 @@ header.header {
 
 .leader-photo-wrap,
 .candidate-photo-wrap {
-  width: 68px;
-  height: 68px;
+  width: 102px;
+  height: 102px;
   border-radius: 50%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  background-color: #dcdce2;
+  border: 2.5px solid #c8c8d0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
   flex-shrink: 0;
-}
-
-/* Lídryně (č. 1 - černé pozadí karty) -> fotka s bílým vnitřním pozadím */
-.leader-card .leader-photo-wrap,
-.leader-card .candidate-photo-wrap {
-  background-color: #ffffff;
-  border-color: #ffffff;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
-}
-
-/* Karta se SVĚTLE ŠEDÝM pozadím (#f0f0f2, sudé) -> fotka má TMAVĚ ŠEDÉ pozadí (#2c2c2e) */
-.candidate-card:nth-child(even) .candidate-photo-wrap {
-  background-color: #2c2c2e;
-  border-color: #2c2c2e;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
-}
-
-/* Karta s BÍLÝM pozadím (#ffffff, liché po 1.) -> fotka má ČERNÉ pozadí (#141416) */
-.candidate-card:nth-child(odd):not(.leader-card) .candidate-photo-wrap {
-  background-color: #141416;
-  border-color: #141416;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .leader-photo-wrap .candidate-photo,
@@ -1085,16 +1042,16 @@ header.header {
 .leader-visual .leader-num,
 .candidate-visual .candidate-badge-num {
   position: absolute;
-  right: -5px;
-  bottom: -3px;
-  font-size: 0.95rem;
+  right: -6px;
+  bottom: -4px;
+  font-size: 1.15rem;
   line-height: 1;
   background: var(--color-white);
   color: var(--color-black);
-  min-width: 26px;
-  height: 26px;
-  padding: 0 4px;
-  border-radius: 13px;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 5px;
+  border-radius: 17px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1108,31 +1065,22 @@ header.header {
   box-sizing: border-box;
 }
 
-.candidate-card:nth-child(even) .candidate-badge-num {
-  border-color: #2c2c2e;
-}
-
 /* Číslo kandidáta (pro ty bez fotky) */
 .candidate-num {
   font-family: var(--font-heading);
-  font-size: 1.85rem;
+  font-size: 2.35rem;
   font-weight: 700;
-  width: 68px;
-  height: 68px;
-  background-color: var(--color-off-white);
+  width: 102px;
+  height: 102px;
+  background-color: #dcdce2;
   color: var(--color-black);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border: 1px solid var(--color-gray-light);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-.candidate-card:nth-child(even) .candidate-num {
-  background-color: var(--color-white);
-  border-color: #dedee3;
+  border: 2.5px solid #c8c8d0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 .candidate-info {
@@ -1155,31 +1103,7 @@ header.header {
   word-wrap: break-word;
 }
 
-.leader-card .candidate-name {
-  color: var(--color-white) !important;
-}
 
-.candidate-meta {
-  font-size: 0.88rem;
-  color: var(--color-gray-dark, #3a3a3c);
-  font-weight: 600;
-  margin-top: 0.25rem;
-  line-height: 1.35;
-}
-
-.leader-card .candidate-meta {
-  color: #e5e5ea !important;
-}
-
-.candidate-submeta {
-  font-size: 0.78rem;
-  color: var(--color-gray-mid);
-  margin-top: 0.15rem;
-}
-
-.leader-card .candidate-submeta {
-  color: rgba(255, 255, 255, 0.7);
-}
 
 /* Candidate Expand Button Wrapper */
 .candidate-more-wrapper {
@@ -1195,6 +1119,7 @@ header.header {
   justify-content: center;
   gap: 0.6rem;
   padding: 0.9rem 2rem;
+  font-family: var(--font-heading);
   font-size: 1rem;
   font-weight: 700;
   border-radius: 50px;
@@ -1375,7 +1300,7 @@ header.header {
     width: 100% !important;
   }
 
-  .candidate-card.leader-card .candidate-name {
+  .candidate-card:first-child .candidate-name {
     font-size: 1.25rem !important;
     text-align: center !important;
   }
@@ -1387,7 +1312,7 @@ header.header {
     width: 100% !important;
   }
 
-  .candidate-card.leader-card .candidate-meta {
+  .candidate-card:first-child .candidate-meta {
     font-size: 0.9rem !important;
     text-align: center !important;
   }
@@ -1396,10 +1321,6 @@ header.header {
     text-align: center !important;
     width: 100% !important;
   }
-}
-
-.leader-card .candidate-submeta {
-  color: rgba(255, 255, 255, 0.7);
 }
 
 /* Local Parts / Místní části */
