@@ -127,6 +127,24 @@ img {
   }
 }
 
+#program {
+  padding-bottom: 4.25rem;
+}
+
+#kandidatka {
+  padding-top: 3.5rem;
+}
+
+@media (max-width: 767px) {
+  #program {
+    padding-bottom: 3.25rem;
+  }
+
+  #kandidatka {
+    padding-top: 2.5rem;
+  }
+}
+
 .theme-dark {
   background-color: var(--color-black);
   color: var(--color-white);
