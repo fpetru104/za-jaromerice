@@ -1103,6 +1103,15 @@ header.header {
   word-wrap: break-word;
 }
 
+.candidate-meta,
+.candidate-submeta {
+  font-size: 0.9rem;
+  color: #52525b;
+  font-weight: 500;
+  margin-top: 0.25rem;
+  line-height: 1.35;
+}
+
 
 
 /* Candidate Expand Button Wrapper */
