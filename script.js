@@ -35,13 +35,34 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // 2. Candidate List Search Filter
+  // 2. Candidate List Search Filter & Mobile Toggle
   const searchInput = document.getElementById('candidate-search');
+  const candidateGrid = document.querySelector('.candidate-grid');
   const candidateCards = document.querySelectorAll('.candidate-card');
+  const candidateToggleBtn = document.getElementById('candidate-toggle-btn');
+
+  if (candidateToggleBtn && candidateGrid) {
+    candidateToggleBtn.addEventListener('click', () => {
+      const isExpanded = candidateGrid.classList.toggle('is-expanded');
+      candidateToggleBtn.setAttribute('aria-expanded', isExpanded);
+      const btnText = candidateToggleBtn.querySelector('.btn-text');
+      if (btnText) {
+        btnText.textContent = isExpanded ? 'Zobrazit méně' : 'Zobrazit další kandidáty (21)';
+      }
+    });
+  }
 
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       const term = e.target.value.toLowerCase().trim();
+      if (candidateGrid && candidateToggleBtn) {
+        if (term.length > 0) {
+          candidateGrid.classList.add('is-expanded');
+          candidateToggleBtn.style.display = 'none';
+        } else {
+          candidateToggleBtn.style.display = '';
+        }
+      }
       candidateCards.forEach(card => {
         const text = card.textContent.toLowerCase();
         if (text.includes(term)) {

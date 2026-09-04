@@ -34,7 +34,7 @@
     rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css?v=1.8.1">
+  <link rel="stylesheet" href="styles.css?v=1.9.7">
 
   <!-- Beta Access Fast Check & Protection Styles (zakomentováno pro budoucí použití)
   <script>
@@ -435,7 +435,12 @@
       <div class="candidate-grid">
         <!-- Leader #1 -->
         <div class="candidate-card leader-card reveal">
-          <div class="candidate-num">1</div>
+          <div class="leader-visual">
+            <div class="leader-photo-wrap">
+              <img src="assets/1_Peprlova.png" alt="Soňa Peprlová" class="candidate-photo">
+            </div>
+            <div class="leader-num">1</div>
+          </div>
           <div class="candidate-info">
             <div class="candidate-name">Soňa Peprlová</div>
             <div class="candidate-meta">62 let · Učitelka MŠ · Zastupitelka a radní města</div>
@@ -444,7 +449,12 @@
 
         <!-- 2 -->
         <div class="candidate-card reveal">
-          <div class="candidate-num">2</div>
+          <div class="candidate-visual">
+            <div class="candidate-photo-wrap">
+              <img src="assets/2_Kriz.png" alt="Petr Kříž" class="candidate-photo">
+            </div>
+            <div class="candidate-badge-num">2</div>
+          </div>
           <div class="candidate-info">
             <div class="candidate-name">Petr Kříž</div>
             <div class="candidate-meta">43 let · Vedoucí oddělení</div>
@@ -453,7 +463,12 @@
 
         <!-- 3 -->
         <div class="candidate-card reveal">
-          <div class="candidate-num">3</div>
+          <div class="candidate-visual">
+            <div class="candidate-photo-wrap">
+              <img src="assets/3_Petru.png" alt="František Petrů" class="candidate-photo">
+            </div>
+            <div class="candidate-badge-num">3</div>
+          </div>
           <div class="candidate-info">
             <div class="candidate-name">František Petrů</div>
             <div class="candidate-meta">55 let · Vedoucí týmu · Zastupitel města</div>
@@ -462,7 +477,12 @@
 
         <!-- 4 -->
         <div class="candidate-card reveal">
-          <div class="candidate-num">4</div>
+          <div class="candidate-visual">
+            <div class="candidate-photo-wrap">
+              <img src="assets/4_Sovkova.png" alt="Pavlína Sovková" class="candidate-photo">
+            </div>
+            <div class="candidate-badge-num">4</div>
+          </div>
           <div class="candidate-info">
             <div class="candidate-name">Pavlína Sovková</div>
             <div class="candidate-meta">50 let · Učitelka ZŠ</div>
@@ -471,7 +491,12 @@
 
         <!-- 5 -->
         <div class="candidate-card reveal">
-          <div class="candidate-num">5</div>
+          <div class="candidate-visual">
+            <div class="candidate-photo-wrap">
+              <img src="assets/5_Petru.png" alt="Mgr. František Petrů" class="candidate-photo">
+            </div>
+            <div class="candidate-badge-num">5</div>
+          </div>
           <div class="candidate-info">
             <div class="candidate-name">Mgr. František Petrů</div>
             <div class="candidate-meta">27 let · Podnikatel</div>
@@ -480,7 +505,12 @@
 
         <!-- 6 -->
         <div class="candidate-card reveal">
-          <div class="candidate-num">6</div>
+          <div class="candidate-visual">
+            <div class="candidate-photo-wrap">
+              <img src="assets/6_Prokes.png" alt="Jaromír Prokeš" class="candidate-photo">
+            </div>
+            <div class="candidate-badge-num">6</div>
+          </div>
           <div class="candidate-info">
             <div class="candidate-name">Jaromír Prokeš</div>
             <div class="candidate-meta">40 let · Učitel praktického vyučování</div>
@@ -489,7 +519,12 @@
 
         <!-- 7 -->
         <div class="candidate-card reveal">
-          <div class="candidate-num">7</div>
+          <div class="candidate-visual">
+            <div class="candidate-photo-wrap">
+              <img src="assets/7_Sovkova.png" alt="Mgr. Pavlína Sovková" class="candidate-photo">
+            </div>
+            <div class="candidate-badge-num">7</div>
+          </div>
           <div class="candidate-info">
             <div class="candidate-name">Mgr. Pavlína Sovková</div>
             <div class="candidate-meta">31 let · Učitelka ZŠ</div>
@@ -525,7 +560,12 @@
 
         <!-- 11 -->
         <div class="candidate-card reveal">
-          <div class="candidate-num">11</div>
+          <div class="candidate-visual">
+            <div class="candidate-photo-wrap">
+              <img src="assets/11_Makovicka.png" alt="Mgr. Karel Makovička" class="candidate-photo">
+            </div>
+            <div class="candidate-badge-num">11</div>
+          </div>
           <div class="candidate-info">
             <div class="candidate-name">Mgr. Karel Makovička</div>
             <div class="candidate-meta">77 let · Důchodce</div>
@@ -570,7 +610,12 @@
 
         <!-- 16 -->
         <div class="candidate-card reveal">
-          <div class="candidate-num">16</div>
+          <div class="candidate-visual">
+            <div class="candidate-photo-wrap">
+              <img src="assets/16_Pavelec.png" alt="Michal Pavelec" class="candidate-photo">
+            </div>
+            <div class="candidate-badge-num">16</div>
+          </div>
           <div class="candidate-info">
             <div class="candidate-name">Michal Pavelec</div>
             <div class="candidate-meta">52 let · Vedoucí prodejny</div>
@@ -621,6 +666,16 @@
             <div class="candidate-meta">79 let · Důchodce</div>
           </div>
         </div>
+      </div>
+
+      <!-- Candidate Expand / Collapse Button (Mobile Only) -->
+      <div class="candidate-more-wrapper">
+        <button id="candidate-toggle-btn" class="candidate-toggle-btn" type="button" aria-expanded="false">
+          <span class="btn-text">Zobrazit další kandidáty (21)</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
       </div>
 
 
