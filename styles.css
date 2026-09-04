@@ -1174,7 +1174,7 @@ header.header {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* Voting Guide Card */
+/* Voting Guide Card & Ballot Paper Sample */
 .voting-guide-card {
   background-color: var(--color-dark-card);
   border: 2px solid var(--color-white);
@@ -1184,34 +1184,68 @@ header.header {
   text-align: left;
 }
 
-.voting-guide-header {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1.25rem;
-}
-
-.voting-box-icon {
-  font-family: var(--font-heading);
-  font-size: 3.2rem;
-  line-height: 1;
-  background-color: var(--color-white);
-  color: var(--color-black);
-  width: 68px;
-  height: 68px;
-  border-radius: 8px;
-  border: 3px solid var(--color-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
 .voting-guide-title {
   font-size: 2rem;
   color: var(--color-white);
-  margin: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.ballot-paper-sample {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: 2px solid var(--color-black);
+  border-radius: 6px;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.ballot-checkbox {
+  width: 64px;
+  height: 64px;
+  border: 3px solid var(--color-black);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  line-height: 1;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+
+.ballot-header-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.ballot-party-name {
+  font-family: var(--font-heading);
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--color-black);
+  line-height: 1.1;
+  letter-spacing: 0.5px;
+}
+
+.ballot-party-number {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  color: #1a1a1a;
+  margin-top: 0.35rem;
+  font-weight: 600;
+}
+
+.ballot-party-number strong {
+  font-weight: 800;
+  color: var(--color-black);
 }
 
 .voting-guide-text {
@@ -1331,19 +1365,35 @@ footer.footer {
     padding: 1.5rem 1.25rem;
   }
 
-  .voting-guide-header {
-    gap: 1rem;
+  .voting-guide-title {
+    font-size: 1.5rem;
     margin-bottom: 1rem;
   }
 
-  .voting-guide-title {
-    font-size: 1.5rem;
+  .ballot-paper-sample {
+    padding: 1.2rem 1rem;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
   }
 
-  .voting-box-icon {
-    width: 56px;
-    height: 56px;
-    font-size: 2.6rem;
+  .ballot-checkbox {
+    width: 52px;
+    height: 52px;
+    font-size: 2.4rem;
+    border-width: 2.5px;
+  }
+
+  .ballot-party-name {
+    font-size: 1.45rem;
+  }
+
+  .ballot-party-number {
+    font-size: 1rem;
+    margin-top: 0.2rem;
+  }
+
+  .ballot-party-number strong {
+    font-size: 1.1rem;
   }
 
   .voting-guide-text,
