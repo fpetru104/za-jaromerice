@@ -1026,8 +1026,14 @@ header.header {
   background-color: #dcdce2;
   border: 2.5px solid #c8c8d0;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 1.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   flex-shrink: 0;
+}
+
+.candidate-card:hover .leader-photo-wrap,
+.candidate-card:hover .candidate-photo-wrap {
+  background-color: #080808;
+  border-color: #080808;
 }
 
 .leader-photo-wrap .candidate-photo,
@@ -1081,6 +1087,13 @@ header.header {
   flex-shrink: 0;
   border: 2.5px solid #c8c8d0;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 1.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 1.2s cubic-bezier(0.16, 1, 0.3, 1), color 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.candidate-card:hover .candidate-num {
+  background-color: #080808;
+  border-color: #080808;
+  color: #ffffff;
 }
 
 .candidate-info {
