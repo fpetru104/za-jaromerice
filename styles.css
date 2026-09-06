@@ -77,6 +77,12 @@ h4,
   line-height: 1.05;
 }
 
+h2 {
+  font-size: clamp(1.9rem, 3.2vw, 2.9rem);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
 p {
   margin-bottom: 1rem;
 }
@@ -1727,7 +1733,7 @@ footer.footer {
   }
 
   h2 {
-    font-size: 1.75rem !important;
+    font-size: clamp(1.65rem, 5vw, 2.1rem) !important;
   }
 
   .countdown-container {
