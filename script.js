@@ -49,6 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (btnText) {
         btnText.textContent = isExpanded ? 'Zobrazit méně' : 'Zobrazit další kandidáty (21)';
       }
+      if (!isExpanded) {
+        const kandidatkaSection = document.getElementById('kandidatka');
+        if (kandidatkaSection) {
+          const yOffset = -70;
+          const y = kandidatkaSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
     });
   }
 

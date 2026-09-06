@@ -1182,7 +1182,7 @@ header.header {
     padding: 1.5rem 1rem !important;
   }
 
-  /* Na mobilu skrýt od 8. kandidáta dál, dokud není rozkliknuto */
+  /* Na mobilu skrýt od 8. kandidáta dál, dokud není rozbaleno (odstranění prázdné mezery) */
   .candidate-grid:not(.is-expanded) .candidate-card:nth-child(n+8) {
     display: none !important;
   }
@@ -1191,8 +1191,8 @@ header.header {
     display: flex;
   }
 
-  /* 8-21 na mobilu: 1 kandidát na celý řádek v horizontálním stylu */
-  .candidate-card:nth-child(n+8) {
+  /* 8-21 na mobilu při rozbalení: plynulý elegantní nájezd */
+  .candidate-grid.is-expanded .candidate-card:nth-child(n+8) {
     grid-column: 1 / -1 !important;
     display: flex !important;
     flex-direction: row !important;
@@ -1200,7 +1200,35 @@ header.header {
     text-align: left !important;
     padding: 0.85rem 1.1rem !important;
     gap: 0.85rem !important;
+    animation: candidateSlideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
+
+  @keyframes candidateSlideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-12px) scale(0.97);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Kaskádový vizuální efekt při rozbalování */
+  .candidate-grid.is-expanded .candidate-card:nth-child(8)  { animation-delay: 0.01s; }
+  .candidate-grid.is-expanded .candidate-card:nth-child(9)  { animation-delay: 0.03s; }
+  .candidate-grid.is-expanded .candidate-card:nth-child(10) { animation-delay: 0.05s; }
+  .candidate-grid.is-expanded .candidate-card:nth-child(11) { animation-delay: 0.07s; }
+  .candidate-grid.is-expanded .candidate-card:nth-child(12) { animation-delay: 0.09s; }
+  .candidate-grid.is-expanded .candidate-card:nth-child(13) { animation-delay: 0.11s; }
+  .candidate-grid.is-expanded .candidate-card:nth-child(14) { animation-delay: 0.13s; }
+  .candidate-grid.is-expanded .candidate-card:nth-child(15) { animation-delay: 0.15s; }
+  .candidate-grid.is-expanded .candidate-card:nth-child(16) { animation-delay: 0.17s; }
+  .candidate-grid.is-expanded .candidate-card:nth-child(17) { animation-delay: 0.19s; }
+  .candidate-grid.is-expanded .candidate-card:nth-child(18) { animation-delay: 0.21s; }
+  .candidate-grid.is-expanded .candidate-card:nth-child(19) { animation-delay: 0.23s; }
+  .candidate-grid.is-expanded .candidate-card:nth-child(20) { animation-delay: 0.25s; }
+  .candidate-grid.is-expanded .candidate-card:nth-child(21) { animation-delay: 0.27s; }
 
   .candidate-card:nth-child(n+8) .candidate-info {
     display: flex !important;
