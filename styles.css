@@ -466,9 +466,9 @@ header.header {
 }
 
 .hero-logo-box {
-  max-width: 650px;
+  max-width: 360px;
   width: 100%;
-  margin: -3.5rem auto -7.5rem;
+  margin: 7.1rem auto -2px;
   display: block;
   animation: logoReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards, logoPulse 4s ease-in-out 1.2s infinite alternate;
 }
@@ -478,13 +478,7 @@ header.header {
   width: 100%;
   display: block;
   filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 60px rgba(255, 255, 255, 0.2));
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   transform-origin: center center;
-}
-
-.hero-logo-large:hover {
-  transform: scale(1.08);
-  filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.75)) drop-shadow(0 0 95px rgba(255, 255, 255, 0.45));
 }
 
 @keyframes logoReveal {
@@ -1646,21 +1640,13 @@ footer.footer {
   }
 
   .hero-logo-box {
-    max-width: 100% !important;
+    max-width: 370px !important;
     width: 100% !important;
-    margin: -0.6rem auto -2.5rem !important;
-  }
-
-  .hero-logo-large,
-  .hero-logo-large:hover {
-    transform: none !important;
-    max-width: 380px !important;
-    width: 100% !important;
-    margin: 0 auto !important;
+    margin: 5.1rem auto 4px !important;
   }
 
   .hero-title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin-top: 0;
     margin-bottom: 1.25rem;
     line-height: 1.3;
@@ -1668,8 +1654,8 @@ footer.footer {
   }
 
   .hero-title .highlight-box {
-    font-size: 1em;
-    padding: 0.18em 0.35em 0.08em 0.35em;
+    font-size: 1.35em;
+    padding: 0.18em 0.45em 0.1em 0.45em;
     margin-bottom: 0.35rem;
     display: inline-block;
     max-width: 100%;
@@ -1677,15 +1663,17 @@ footer.footer {
 
   .hero-title-sub {
     font-size: 0.9em;
+    letter-spacing: 0.04em;
     display: block;
     max-width: 100%;
   }
 
   .hero-lead {
-    font-size: 1rem;
-    line-height: 1.65;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    font-weight: 400;
     margin-bottom: 2rem;
-    padding: 0 0.75rem;
+    padding: 0 0.5rem;
   }
 
   .hero-ctas {
@@ -1806,9 +1794,8 @@ footer.footer {
 }
 
 @media (max-width: 480px) {
-  .hero-logo-large {
-    max-width: 220px;
-    width: 80%;
+  .hero-logo-box {
+    max-width: 330px !important;
   }
 
   .brand-title {
@@ -1816,8 +1803,12 @@ footer.footer {
   }
 
   .hero-title {
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     overflow-wrap: break-word;
+  }
+
+  .hero-lead {
+    font-size: 1.15rem;
   }
 
   .program-card h3 {
