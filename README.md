@@ -57,7 +57,7 @@ Projekt nevyžaduje žádné sestavovací nástroje ani Node.js závislosti. Pro
 ## 📞 Kontakt & Sociální sítě
 
 - **Web:** [zajaromerice.cz](https://zajaromerice.cz)
-- **E-mail:** [frantapetru@seznam.cz](mailto:frantapetru@seznam.cz)
+- **E-mail:** [fandapetru@gmail.com](mailto:fandapetru@gmail.com)
 - **Facebook:** [SNK ZA JAROMĚŘICE na Facebooku](https://www.facebook.com/profile.php?id=100070278666960)
 
 ---
