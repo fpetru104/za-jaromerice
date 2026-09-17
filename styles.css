@@ -675,6 +675,24 @@ header.header {
   color: var(--color-dark-border);
 }
 
+.election-banner-message {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-white);
+  padding: 0.75rem 1.5rem;
+  line-height: 1.3;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 768px) {
+  .election-banner-message {
+    font-size: 1.65rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
 /* Card Grids */
 .grid-2 {
   display: grid;

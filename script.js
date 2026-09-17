@@ -1,39 +1,92 @@
 // Interactive Script for ZA JAROMĚŘICE Website
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Election Countdown Timer (October 9, 2026, 14:00)
-  const electionDate = new Date('2026-10-09T14:00:00').getTime();
+  // 1. Election Countdown & Post-Election Dynamic States
+  // Start: October 9, 2026, 14:00 CEST
+  // End: October 10, 2026, 14:00 CEST
+  const electionStartDate = new Date('2026-10-09T14:00:00+02:00').getTime();
+  const electionEndDate = new Date('2026-10-10T14:00:00+02:00').getTime();
 
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = electionDate - now;
+  function updateElectionCountdown() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const mockDateParam = urlParams.get('testDate');
+    const now = mockDateParam ? new Date(mockDateParam).getTime() : new Date().getTime();
 
-    const daysEl = document.getElementById('cd-days');
-    const hoursEl = document.getElementById('cd-hours');
-    const minutesEl = document.getElementById('cd-minutes');
-    const secondsEl = document.getElementById('cd-seconds');
+    const titleEl = document.querySelector('#odpocet .countdown-title');
+    const gridEl = document.getElementById('election-countdown');
+    const containerEl = document.querySelector('#odpocet .countdown-container');
+    const jakHlasovatEl = document.getElementById('jak-hlasovat');
+    const waveDividerEl = document.querySelector('#odpocet .section-wave');
+    const jakHlasovatNavLinks = document.querySelectorAll('a[href="#jak-hlasovat"]');
 
-    if (distance < 0) {
-      if (daysEl) daysEl.textContent = '0';
-      if (hoursEl) hoursEl.textContent = '00';
-      if (minutesEl) minutesEl.textContent = '00';
-      if (secondsEl) secondsEl.textContent = '00';
-      return;
+    let msgEl = document.getElementById('election-message');
+
+    if (now < electionStartDate) {
+      // PHASE 1: Before elections (Countdown)
+      const distance = electionStartDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      const daysEl = document.getElementById('cd-days');
+      const hoursEl = document.getElementById('cd-hours');
+      const minutesEl = document.getElementById('cd-minutes');
+      const secondsEl = document.getElementById('cd-seconds');
+
+      if (daysEl) daysEl.textContent = days;
+      if (hoursEl) hoursEl.textContent = hours < 10 ? '0' + hours : hours;
+      if (minutesEl) minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes;
+      if (secondsEl) secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
+
+      if (titleEl) titleEl.style.display = '';
+      if (gridEl) gridEl.style.display = '';
+      if (msgEl) msgEl.remove();
+
+      if (jakHlasovatEl) jakHlasovatEl.style.display = '';
+      if (waveDividerEl) waveDividerEl.style.display = '';
+      jakHlasovatNavLinks.forEach(link => link.style.display = '');
+
+    } else if (now >= electionStartDate && now < electionEndDate) {
+      // PHASE 2: During elections (Oct 9 14:00 - Oct 10 14:00)
+      if (titleEl) titleEl.style.display = 'none';
+      if (gridEl) gridEl.style.display = 'none';
+
+      if (!msgEl) {
+        msgEl = document.createElement('div');
+        msgEl.id = 'election-message';
+        msgEl.className = 'election-banner-message';
+        if (containerEl) containerEl.appendChild(msgEl);
+      }
+      msgEl.textContent = 'Přijďte prosím k volbám!';
+
+      if (jakHlasovatEl) jakHlasovatEl.style.display = '';
+      if (waveDividerEl) waveDividerEl.style.display = '';
+      jakHlasovatNavLinks.forEach(link => link.style.display = '');
+
+    } else {
+      // PHASE 3: After elections (Oct 10 14:00 onward)
+      if (titleEl) titleEl.style.display = 'none';
+      if (gridEl) gridEl.style.display = 'none';
+
+      if (!msgEl) {
+        msgEl = document.createElement('div');
+        msgEl.id = 'election-message';
+        msgEl.className = 'election-banner-message';
+        if (containerEl) containerEl.appendChild(msgEl);
+      }
+      msgEl.textContent = 'Děkujeme za vaše hlasy!';
+
+      // Hide voting guide section, wave divider, and nav links
+      if (jakHlasovatEl) jakHlasovatEl.style.display = 'none';
+      if (waveDividerEl) waveDividerEl.style.display = 'none';
+      jakHlasovatNavLinks.forEach(link => link.style.display = 'none');
     }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    if (daysEl) daysEl.textContent = days;
-    if (hoursEl) hoursEl.textContent = hours < 10 ? '0' + hours : hours;
-    if (minutesEl) minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes;
-    if (secondsEl) secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
   }
 
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+  updateElectionCountdown();
+  setInterval(updateElectionCountdown, 1000);
 
   // 2. Candidate List Search Filter & Mobile Toggle
   const searchInput = document.getElementById('candidate-search');
