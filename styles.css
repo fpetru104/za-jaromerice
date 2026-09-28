@@ -2209,18 +2209,34 @@ body.modal-open {
 @media (max-width: 767px) {
   .flyer-modal {
     padding: 0;
+    inset: 0;
+    height: 100vh;
+    height: 100dvh;
+    height: -webkit-fill-available;
   }
 
   .flyer-modal-container {
     height: 100vh;
+    height: 100dvh;
+    height: -webkit-fill-available;
     max-height: 100vh;
+    max-height: 100dvh;
+    max-height: -webkit-fill-available;
     border-radius: 0;
     border: none;
+    transform: none !important;
   }
 
+  /* Safe-area aware header */
   .flyer-modal-header {
-    padding: 0.55rem 0.75rem;
+    padding-top: max(0.75rem, env(safe-area-inset-top, 0.75rem));
+    padding-bottom: 0.55rem;
+    padding-left: max(0.75rem, env(safe-area-inset-left, 0.75rem));
+    padding-right: max(0.75rem, env(safe-area-inset-right, 0.75rem));
     gap: 0.4rem;
+    flex-shrink: 0;
+    background: #18191d;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .flyer-modal-title {
@@ -2241,29 +2257,56 @@ body.modal-open {
     display: none;
   }
 
+  /* Body flex container with min-height: 0 so it never pushes header/footer off-screen */
   .flyer-modal-body {
-    padding: 0.4rem;
+    flex: 1;
+    min-height: 0;
+    padding: 0.4rem 0.6rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .flyer-book-stage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .flyer-book {
-    max-height: calc(100vh - 120px);
+    max-height: 100%;
+    max-width: 100%;
+    height: 100%;
+    width: auto;
+    aspect-ratio: 1053 / 1489;
   }
 
   .flyer-nav-arrow {
-    display: none; /* Mobile uses swipe and bottom buttons */
+    display: none; /* Mobile uses swipe / drag and bottom buttons */
+  }
+
+  /* Safe-area aware footer */
+  .flyer-modal-footer {
+    padding-top: 0.55rem;
+    padding-bottom: max(0.85rem, env(safe-area-inset-bottom, 0.85rem));
+    padding-left: max(0.75rem, env(safe-area-inset-left, 0.75rem));
+    padding-right: max(0.75rem, env(safe-area-inset-right, 0.75rem));
+    flex-shrink: 0;
+    background: #18191d;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .flyer-footer-nav {
     gap: 0.5rem;
+    width: 100%;
   }
 
   .flyer-footer-btn {
-    padding: 0.35rem 0.65rem;
-    font-size: 0.75rem;
-  }
-
-  .flyer-page-indicator {
-    font-size: 0.75rem;
+    padding: 0.38rem 0.75rem;
+    font-size: 0.78rem;
   }
 }
 
