@@ -1491,15 +1491,24 @@ header.header {
   align-items: center;
 }
 
-.flyer-card {
+.flyer-card,
+button.flyer-card {
   position: relative;
   display: block;
   max-width: 520px;
   width: 100%;
   border-radius: 16px;
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   text-decoration: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .flyer-card:hover {

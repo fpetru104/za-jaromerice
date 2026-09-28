@@ -36,7 +36,7 @@
     rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css?v=1.11.0">
+  <link rel="stylesheet" href="styles.css?v=20260929b">
 
   <!-- Beta Access Fast Check & Protection Styles (zakomentováno pro budoucí použití)
   <script>
@@ -729,10 +729,10 @@
   <section class="section theme-light" id="letak">
     <div class="container">
       <div class="flyer-wrapper reveal">
-        <div class="flyer-visual">
-          <button type="button" class="flyer-card flyer-open-btn" title="Prohlédnout volební leták online" aria-haspopup="dialog">
+                <div class="flyer-visual">
+          <div class="flyer-card flyer-open-btn" role="button" tabindex="0" title="Otevřít interaktivní prohlížeč letáku" aria-haspopup="dialog" onclick="if(window.openFlyerModal){window.openFlyerModal(1);}else{var m=document.getElementById('flyer-modal');if(m){m.classList.add('is-open');document.body.classList.add('modal-open');}}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();if(window.openFlyerModal){window.openFlyerModal(1);}else{var m=document.getElementById('flyer-modal');if(m){m.classList.add('is-open');document.body.classList.add('modal-open');}}}">
             <div class="flyer-badge-floating">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 <line x1="11" y1="8" x2="11" y2="14"></line>
@@ -744,7 +744,7 @@
               <source srcset="assets/letak.webp" type="image/webp">
               <img src="assets/letak.png" alt="Volební leták SNK ZA JAROMĚŘICE – Volební program 2026–2030" class="flyer-img" loading="lazy" decoding="async">
             </picture>
-          </button>
+          </div>
         </div>
         <div class="flyer-content">
           <span class="eyebrow">Volební leták 2026</span>
@@ -925,7 +925,7 @@
 
 
   <!-- Scripts -->
-  <script src="script.js"></script>
+  <script src="script.js?v=20260929b"></script>
 
   <!-- Beta Authentication Script (zakomentováno pro budoucí použití)
   <script>

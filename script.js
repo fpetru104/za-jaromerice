@@ -269,6 +269,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  window.openFlyerModal = openFlyerModal;
+  window.closeFlyerModal = closeFlyerModal;
+  window.flipToPage = flipToPage;
+
   function openFlyerModal(initialPage = 1) {
     if (!flyerModal) return;
 
