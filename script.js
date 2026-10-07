@@ -1,6 +1,81 @@
 // Interactive Script for ZA JAROMĚŘICE Website
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 0. Statement Modal (Antikampaň)
+  const statementModal = document.getElementById('statement-modal');
+  const statementBackdrop = document.getElementById('statement-modal-backdrop');
+  const statementCloseBtn = document.getElementById('statement-modal-close');
+  const statementOpenWebBtn = document.getElementById('statement-open-web-btn');
+  const statementAlertReopenBtn = document.getElementById('statement-alert-reopen-btn');
+
+  function openStatementModal() {
+    if (!statementModal) return;
+    statementModal.classList.add('is-open');
+    statementModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    document.documentElement.classList.add('modal-open');
+  }
+
+  function closeStatementModal() {
+    if (!statementModal) return;
+    document.documentElement.classList.remove('statement-first-visit');
+    document.documentElement.classList.remove('modal-open');
+    statementModal.classList.remove('is-open');
+    statementModal.setAttribute('aria-hidden', 'true');
+    const flyer = document.getElementById('flyer-modal');
+    if (!flyer || !flyer.classList.contains('is-open')) {
+      document.body.classList.remove('modal-open');
+      document.documentElement.classList.remove('modal-open');
+    }
+  }
+
+  window.openStatementModal = openStatementModal;
+  window.closeStatementModal = closeStatementModal;
+
+  // Prevent wheel and touch scrolling outside modal dialog content
+  if (statementModal) {
+    const isInsideBody = (target) => {
+      const dialogBody = statementModal.querySelector('.statement-modal-body');
+      return dialogBody && dialogBody.contains(target);
+    };
+
+    statementModal.addEventListener('wheel', (e) => {
+      if (!isInsideBody(e.target)) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    statementModal.addEventListener('touchmove', (e) => {
+      if (!isInsideBody(e.target)) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+  }
+
+  // Support direct URL parameters to view statement (?statement=1 or ?vyjadreni=1)
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('statement') || urlParams.has('vyjadreni')) {
+      openStatementModal();
+    }
+  } catch (e) {}
+
+  if (statementCloseBtn) {
+    statementCloseBtn.addEventListener('click', closeStatementModal);
+  }
+  if (statementOpenWebBtn) {
+    statementOpenWebBtn.addEventListener('click', closeStatementModal);
+  }
+  if (statementBackdrop) {
+    statementBackdrop.addEventListener('click', closeStatementModal);
+  }
+  if (statementAlertReopenBtn) {
+    statementAlertReopenBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openStatementModal();
+    });
+  }
+
   // 1. Election Countdown & Post-Election Dynamic States
   // Start: October 9, 2026, 14:00 CEST
   // End: October 10, 2026, 14:00 CEST
@@ -273,8 +348,24 @@ document.addEventListener('DOMContentLoaded', () => {
   window.closeFlyerModal = closeFlyerModal;
   window.flipToPage = flipToPage;
 
+  let savedFlyerScrollY = 0;
+
   function openFlyerModal(initialPage = 1) {
     if (!flyerModal) return;
+    if (flyerModal.classList.contains('is-open')) return;
+
+    // 1. Capture scroll position BEFORE classes are added
+    const currentY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || window.scrollY || 0;
+    const letakEl = document.getElementById('letak');
+    const letakOffset = letakEl ? (letakEl.getBoundingClientRect().top + currentY) : 0;
+
+    if (currentY > 150) {
+      savedFlyerScrollY = currentY;
+    } else if (letakOffset > 150) {
+      savedFlyerScrollY = letakOffset;
+    } else {
+      savedFlyerScrollY = currentY;
+    }
 
     // Reset all cards
     document.querySelectorAll('.flyer-page-card').forEach(card => {
@@ -290,14 +381,64 @@ document.addEventListener('DOMContentLoaded', () => {
     flyerModal.classList.add('is-open');
     flyerModal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
+    document.documentElement.classList.add('modal-open');
   }
 
   function closeFlyerModal() {
     if (!flyerModal) return;
     flyerModal.classList.remove('is-open');
     flyerModal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('modal-open');
+    const statement = document.getElementById('statement-modal');
+    const statementIsOpen = statement && (
+      statement.classList.contains('is-open') ||
+      document.documentElement.classList.contains('statement-first-visit')
+    );
+    if (!statementIsOpen) {
+      document.body.classList.remove('modal-open');
+      document.documentElement.classList.remove('modal-open');
+    }
+
+    const targetY = savedFlyerScrollY;
+    if (typeof targetY === 'number' && targetY > 50) {
+      const htmlEl = document.documentElement;
+      const prevBehavior = htmlEl.style.scrollBehavior;
+      htmlEl.style.scrollBehavior = 'auto';
+      document.body.style.scrollBehavior = 'auto';
+
+      window.scrollTo(0, targetY);
+      htmlEl.scrollTop = targetY;
+      document.body.scrollTop = targetY;
+
+      requestAnimationFrame(() => {
+        window.scrollTo(0, targetY);
+        htmlEl.scrollTop = targetY;
+        document.body.scrollTop = targetY;
+        setTimeout(() => {
+          window.scrollTo(0, targetY);
+          htmlEl.scrollTop = targetY;
+          document.body.scrollTop = targetY;
+          htmlEl.style.scrollBehavior = prevBehavior;
+          document.body.style.scrollBehavior = prevBehavior;
+        }, 50);
+      });
+    }
   }
+
+  // Prevent background scrolling while flyer modal is open
+  window.addEventListener('wheel', (e) => {
+    if (flyerModal && flyerModal.classList.contains('is-open')) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  window.addEventListener('touchmove', (e) => {
+    if (flyerModal && flyerModal.classList.contains('is-open')) {
+      const isTabs = e.target.closest('.flyer-modal-tabs');
+      if (!isTabs) {
+        e.preventDefault();
+      }
+    }
+  }, { passive: false });
 
   // Trigger buttons
   if (flyerOpenBtns.length > 0) {
@@ -426,19 +567,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Keyboard Navigation
   window.addEventListener('keydown', (e) => {
-    if (!flyerModal || !flyerModal.classList.contains('is-open')) return;
+    const isStatementOpen = statementModal && (
+      statementModal.classList.contains('is-open') ||
+      document.documentElement.classList.contains('statement-first-visit')
+    );
+
+    if (isStatementOpen) {
+      if (e.key === 'Escape') {
+        closeStatementModal();
+        return;
+      }
+      const scrollKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
+      if (scrollKeys.includes(e.key)) {
+        const dialogBody = statementModal.querySelector('.statement-modal-body');
+        if (dialogBody) {
+          if (e.key === 'ArrowDown') {
+            dialogBody.scrollTop += 60;
+            e.preventDefault();
+          } else if (e.key === 'ArrowUp') {
+            dialogBody.scrollTop -= 60;
+            e.preventDefault();
+          } else if (e.key === 'PageDown' || e.key === ' ') {
+            dialogBody.scrollTop += 260;
+            e.preventDefault();
+          } else if (e.key === 'PageUp') {
+            dialogBody.scrollTop -= 260;
+            e.preventDefault();
+          }
+        }
+      }
+      return;
+    }
 
     if (e.key === 'Escape') {
-      closeFlyerModal();
-    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      if (flyerModal && flyerModal.classList.contains('is-open')) {
+        closeFlyerModal();
+        return;
+      }
+    }
+
+    if (!flyerModal || !flyerModal.classList.contains('is-open')) return;
+
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
       if (currentFlyerPage > 1) flipToPage(currentFlyerPage - 1, 'prev');
     } else if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
       e.preventDefault();
       if (currentFlyerPage < 4) flipToPage(currentFlyerPage + 1, 'next');
     } else if (e.key === 'Home') {
+      e.preventDefault();
       flipToPage(1, 'prev');
     } else if (e.key === 'End') {
+      e.preventDefault();
       flipToPage(4, 'next');
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+      e.preventDefault();
     }
   });
 });

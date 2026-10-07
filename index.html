@@ -38,6 +38,17 @@
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css?v=20260929c">
 
+  <!-- Statement Modal: Zobrazit při každém načtení stránky -->
+  <script>
+    (function () {
+      try {
+        localStorage.removeItem('statement_seen_2026');
+      } catch (e) {}
+      document.documentElement.classList.add('statement-first-visit');
+      document.documentElement.classList.add('modal-open');
+    })();
+  </script>
+
   <!-- Beta Access Fast Check & Protection Styles (zakomentováno pro budoucí použití)
   <script>
     if (sessionStorage.getItem('beta_authenticated') === 'true') {
@@ -193,6 +204,28 @@
     </div>
   </div>
   -->
+
+  <!-- Top Announcement Bar (re-openable) -->
+  <aside class="statement-alert-bar" id="statement-alert-bar">
+    <div class="container statement-alert-bar-inner">
+      <div class="statement-alert-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+          <line x1="12" y1="9" x2="12" y2="13"></line>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+        <span>Stanovisko</span>
+      </div>
+      <span class="statement-alert-text">Nevěřte anonymním pomluvám šířeným na poslední chvíli.</span>
+      <button type="button" class="statement-alert-link" id="statement-alert-reopen-btn">
+        <span>Přečíst celé vyjádření</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </div>
+  </aside>
 
   <!-- Centered Compact Header -->
   <header class="header">
@@ -945,6 +978,62 @@
       }
     }
   </script>
+  -->
+
+  <!-- Statement Modal (Antikampaň) -->
+  <div id="statement-modal" class="statement-modal" role="dialog" aria-modal="true" aria-labelledby="statement-modal-title">
+    <div class="statement-modal-backdrop" id="statement-modal-backdrop"></div>
+    <div class="statement-modal-dialog">
+      <button type="button" class="statement-modal-close" id="statement-modal-close" aria-label="Zavřít okno">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="statement-modal-header">
+        <div class="statement-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <span>Důležité sdělení</span>
+        </div>
+        <h2 class="statement-modal-title" id="statement-modal-title">
+          NEVĚŘTE ANONYMNÍM POMLUVÁM ŠÍŘENÝM NA POSLEDNÍ CHVÍLI
+        </h2>
+      </div>
+
+      <div class="statement-modal-body">
+        <p class="statement-salutation"><strong>Vážení spoluobčané, sousedé,</strong></p>
+        <p>naši kampaň jsme od začátku vedli slušně, otevřeně a s pozitivním programem opřeným o reálnou práci a zkušenosti v radě města. Rozdílné názory na rozvoj města jsou naprosto přirozené a věřili jsme, že si je s našimi soupeři vyříkáme jako sousedé – z očí do očí a férově.</p>
+        <p>To se bohužel nepotvrdilo. Materiál, který se dnes objevil v jaroměřických poštovních schránkách, nemá s férovou diskuzí nic společného.</p>
+        <p>Rozeslat snůšku obvinění pouhých pár hodin před otevřením volebních místností je osvědčená taktika těch, kterým chybí odvaha. Pisatelé dobře vědí, že v takto šibeničním termínu už není čas na tištěnou odpověď do schránek a složité ověřování vytržených čísel a faktů. Spoléhají na to, že lež zopakovaná těsně před volbami znejistí ty, kteří vidí, že se město reálně posouvá dopředu.</p>
+        <p>Zatímco koaliční zastupitele autoři jmenují celými jmény, sami se podepsat bojí. Schovávají se za anonymitu, aby nenesli odpovědnost a lidé nevěděli, kdo se k takovému kroku snížil.</p>
+        <p>Nenechme si Jaroměřice otrávit lidmi, kteří se vám nedokážou ani představit a jen šlapou po práci úspěšnějších. Rozhodujte podle toho, jak se vám ve městě reálně žije.</p>
+        <p>Pomlouvat zvládne každý. Anonymně zvlášť.</p>
+
+        <div class="statement-signature">
+          <div class="statement-sign-name">
+            <span>Za SNK ZA JAROMĚŘICE</span>
+            <span>Soňa Peprlová, Petr Kříž a František Petrů</span>
+          </div>
+        </div>
+
+        <div class="statement-modal-actions">
+          <button type="button" class="statement-open-btn" id="statement-open-web-btn">
+            <span>Otevřít web</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Interactive 4-Page Flipbook Flyer Modal -->
   <div id="flyer-modal" class="flyer-modal" aria-hidden="true" role="dialog" aria-label="Prohlížeč volebního letáku">
     <div class="flyer-modal-backdrop" id="flyer-modal-backdrop"></div>
