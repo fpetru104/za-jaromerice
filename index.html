@@ -36,7 +36,7 @@
     rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css?v=20261007h">
+  <link rel="stylesheet" href="styles.css?v=20261008a">
 
   <!-- Embedded Critical Styles for Statement Modal & Alert Bar (garantuje 100% zobrazení i při staré mezipaměti prohlížeče) -->
   <style>
@@ -404,14 +404,27 @@
     }
   </style>
 
-  <!-- Statement Modal: Zobrazit při každém načtení stránky -->
+  <!-- Statement Modal: Zobrazit při každém načtení stránky (kromě přímého odkazu na web, např. #web nebo ?web) -->
   <script>
     (function () {
       try {
         localStorage.removeItem('statement_seen_2026');
       } catch (e) {}
-      document.documentElement.classList.add('statement-first-visit');
-      document.documentElement.classList.add('modal-open');
+
+      var hash = (window.location.hash || '').toLowerCase();
+      var search = (window.location.search || '').toLowerCase();
+      var skipModal = hash === '#web' || 
+                      hash === '#domu' || 
+                      hash === '#uvod' || 
+                      hash === '#bez-vzkazu' ||
+                      search.indexOf('web') !== -1 || 
+                      search.indexOf('skip') !== -1 ||
+                      search.indexOf('bez-vzkazu') !== -1;
+
+      if (!skipModal) {
+        document.documentElement.classList.add('statement-first-visit');
+        document.documentElement.classList.add('modal-open');
+      }
     })();
   </script>
 
@@ -552,6 +565,8 @@
 </head>
 
 <body>
+  <!-- Web Top Anchor for direct links (#web) -->
+  <div id="web" aria-hidden="true" style="position:absolute;top:0;left:0;width:0;height:0;pointer-events:none;"></div>
 
   <!-- Beta Access Gate Modal (zakomentováno pro budoucí použití)
   <div id="beta-gate">
@@ -1324,7 +1339,7 @@
 
 
   <!-- Scripts -->
-  <script src="script.js?v=20261007h"></script>
+  <script src="script.js?v=20261008a"></script>
 
   <!-- Beta Authentication Script (zakomentováno pro budoucí použití)
   <script>
@@ -1373,10 +1388,10 @@
 
       <div class="statement-modal-body">
         <p class="statement-salutation"><strong>Vážení spoluobčané, sousedé,</strong></p>
-        <p>naši kampaň jsme od začátku vedli slušně, otevřeně a s pozitivním programem opřeným o reálnou práci a zkušenosti v radě města. Rozdílné názory na rozvoj města jsou naprosto přirozené a věřili jsme, že si je s našimi soupeři vyříkáme jako sousedé – z očí do očí a férově.</p>
-        <p>To se bohužel nepotvrdilo. Materiál, který se dnes objevil v jaroměřických poštovních schránkách, nemá s férovou diskuzí nic společného.</p>
-        <p>Rozeslat snůšku obvinění pouhých pár hodin před otevřením volebních místností je osvědčená taktika těch, kterým chybí odvaha. Pisatelé dobře vědí, že v takto šibeničním termínu už není čas na tištěnou odpověď do schránek a složité ověřování vytržených čísel a faktů. Spoléhají na to, že lež zopakovaná těsně před volbami znejistí ty, kteří vidí, že se město reálně posouvá dopředu.</p>
-        <p>Zatímco koaliční zastupitele autoři jmenují celými jmény, sami se podepsat bojí. Schovávají se za anonymitu, aby nenesli odpovědnost a lidé nevěděli, kdo se k takovému kroku snížil.</p>
+        <p>naši kampaň jsme od začátku vedli slušně, otevřeně a s pozitivním programem opřeným o reálnou práci a zkušenosti v radě města. Rozdílné názory na rozvoj města jsou naprosto přirozené a věřili jsme, že si je s námi naši političtí soupeři vyříkají jako sousedé – z očí do očí a férově.</p>
+        <p>To se bohužel nepotvrdilo. Materiál, který se objevil v jaroměřických poštovních schránkách, nemá s férovou diskuzí nic společného.</p>
+        <p>Rozeslat štvavý text pouhých pár hodin před otevřením volebních místností je osvědčená taktika těch, kterým chybí odvaha. Pisatelé dobře vědí, že v takto šibeničním termínu už není čas na tištěnou odpověď do schránek a složité ověřování vytržených čísel a údajů. Spoléhají na to, že sbírka polopravd zaslaná těsně před volbami znejistí ty, kteří vidí, že se město reálně posouvá dopředu.</p>
+        <p>Zatímco koaliční zastupitele autoři jmenují celými jmény, sami se podepsat bojí. Schovávají se za anonymní podpis „opoziční zastupitelé,“ aby nenesli odpovědnost a lidé nevěděli, kdo se k takovému kroku snížil nebo s ním souhlasí.</p>
         <p>Nenechte si Jaroměřice otrávit lidmi, kteří se vám nedokážou ani představit. Rozhodujte podle toho, jak se vám ve městě reálně žije.</p>
         <p>Pomlouvat zvládne každý. Anonymně zvlášť.</p>
 

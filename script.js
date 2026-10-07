@@ -52,10 +52,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: false });
   }
 
-  // Support direct URL parameters to view statement (?statement=1 or ?vyjadreni=1)
+  // Support direct URL parameters/hashes for statement or web bypass
   try {
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('statement') || urlParams.has('vyjadreni')) {
+    const hash = (window.location.hash || '').toLowerCase();
+    const isSkipUrl = hash === '#web' || hash === '#domu' || hash === '#uvod' || hash === '#bez-vzkazu' || urlParams.has('web') || urlParams.has('skip');
+
+    if (isSkipUrl) {
+      closeStatementModal();
+    } else if (urlParams.has('statement') || urlParams.has('vyjadreni') || hash === '#vyjadreni' || hash === '#statement') {
       openStatementModal();
     }
   } catch (e) {}
