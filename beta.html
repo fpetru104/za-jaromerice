@@ -36,7 +36,7 @@
     rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css?v=20261007g">
+  <link rel="stylesheet" href="styles.css?v=20261007h">
 
   <!-- Embedded Critical Styles for Statement Modal & Alert Bar (garantuje 100% zobrazení i při staré mezipaměti prohlížeče) -->
   <style>
@@ -271,12 +271,13 @@
       line-height: 1.45;
     }
     .statement-modal-actions {
-      margin-top: 1.5rem;
-      padding-top: 1.35rem;
+      padding: 0.95rem 1.85rem;
       border-top: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(19, 20, 23, 0.98);
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      flex-shrink: 0;
     }
     .statement-open-btn {
       background: #ffffff;
@@ -317,19 +318,20 @@
     @media (max-width: 768px) {
       .statement-modal {
         padding: 0.75rem 0.5rem;
-        align-items: flex-start;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
+        align-items: center;
+        overflow: hidden;
       }
       .statement-modal-dialog {
-        margin: auto;
+        margin: 0 auto;
         width: 92%;
         max-width: 460px;
+        height: min(86dvh, 86vh, 640px);
         max-height: calc(100dvh - 1.5rem);
         max-height: calc(100vh - 1.5rem);
         border-radius: 16px;
         display: flex;
         flex-direction: column;
+        overflow: hidden;
       }
       .statement-modal-header {
         padding: 0.75rem 2.85rem 0.5rem 0.85rem;
@@ -356,6 +358,7 @@
         flex: 1 1 auto;
         min-height: 0;
         overflow-y: auto;
+        touch-action: pan-y;
         -webkit-overflow-scrolling: touch;
       }
       .statement-salutation {
@@ -369,21 +372,24 @@
         font-size: 0.92rem;
       }
       .statement-signature {
-        margin: 0.65rem 0 0.5rem;
+        margin: 0.65rem 0 0.4rem;
       }
       .statement-sign-name {
         font-size: 0.8rem;
         line-height: 1.35;
       }
       .statement-modal-actions {
-        margin-top: 0.65rem;
-        padding-top: 0.55rem;
+        padding: 0.65rem 0.85rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.09);
+        background: rgba(19, 20, 23, 0.98);
         flex-shrink: 0;
+        margin-top: 0;
       }
       .statement-open-btn {
-        padding: 0.6rem 1.15rem;
-        font-size: 0.86rem;
+        padding: 0.65rem 1.15rem;
+        font-size: 0.88rem;
         border-radius: 8px;
+        width: 100%;
       }
       .statement-modal-close {
         top: 0.6rem;
@@ -1318,7 +1324,7 @@
 
 
   <!-- Scripts -->
-  <script src="script.js?v=20261007g"></script>
+  <script src="script.js?v=20261007h"></script>
 
   <!-- Beta Authentication Script (zakomentováno pro budoucí použití)
   <script>
@@ -1371,7 +1377,7 @@
         <p>To se bohužel nepotvrdilo. Materiál, který se dnes objevil v jaroměřických poštovních schránkách, nemá s férovou diskuzí nic společného.</p>
         <p>Rozeslat snůšku obvinění pouhých pár hodin před otevřením volebních místností je osvědčená taktika těch, kterým chybí odvaha. Pisatelé dobře vědí, že v takto šibeničním termínu už není čas na tištěnou odpověď do schránek a složité ověřování vytržených čísel a faktů. Spoléhají na to, že lež zopakovaná těsně před volbami znejistí ty, kteří vidí, že se město reálně posouvá dopředu.</p>
         <p>Zatímco koaliční zastupitele autoři jmenují celými jmény, sami se podepsat bojí. Schovávají se za anonymitu, aby nenesli odpovědnost a lidé nevěděli, kdo se k takovému kroku snížil.</p>
-        <p>Nenechme si Jaroměřice otrávit lidmi, kteří se vám nedokážou ani představit a jen šlapou po práci úspěšnějších. Rozhodujte podle toho, jak se vám ve městě reálně žije.</p>
+        <p>Nenechte si Jaroměřice otrávit lidmi, kteří se vám nedokážou ani představit. Rozhodujte podle toho, jak se vám ve městě reálně žije.</p>
         <p>Pomlouvat zvládne každý. Anonymně zvlášť.</p>
 
         <div class="statement-signature">
@@ -1380,16 +1386,16 @@
             <span>Soňa Peprlová, Petr Kříž a František Petrů</span>
           </div>
         </div>
+      </div>
 
-        <div class="statement-modal-actions">
-          <button type="button" class="statement-open-btn" id="statement-open-web-btn">
-            <span>Otevřít web</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </button>
-        </div>
+      <div class="statement-modal-actions">
+        <button type="button" class="statement-open-btn" id="statement-open-web-btn">
+          <span>Otevřít web</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
       </div>
     </div>
   </div>

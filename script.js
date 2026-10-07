@@ -34,19 +34,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Prevent wheel and touch scrolling outside modal dialog content
   if (statementModal) {
-    const isInsideBody = (target) => {
-      const dialogBody = statementModal.querySelector('.statement-modal-body');
-      return dialogBody && dialogBody.contains(target);
+    const isInsideDialog = (target) => {
+      const dialog = statementModal.querySelector('.statement-modal-dialog');
+      return dialog && dialog.contains(target);
     };
 
     statementModal.addEventListener('wheel', (e) => {
-      if (!isInsideBody(e.target)) {
+      if (!isInsideDialog(e.target)) {
         e.preventDefault();
       }
     }, { passive: false });
 
     statementModal.addEventListener('touchmove', (e) => {
-      if (!isInsideBody(e.target)) {
+      if (!isInsideDialog(e.target)) {
         e.preventDefault();
       }
     }, { passive: false });
