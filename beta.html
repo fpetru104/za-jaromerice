@@ -236,17 +236,68 @@
       </p>
 
       <div class="hero-ctas reveal">
+        <a href="#vysledky" class="btn btn-outline">Výsledky voleb</a>
         <a href="#program" class="btn btn-outline">Program</a>
         <a href="#kandidatka" class="btn btn-outline">Kandidátka</a>
         <a href="#jak-hlasovat" class="btn btn-outline">Hlasování</a>
       </div>
     </div>
 
-    <!-- Wavy Divider to Program -->
+    <!-- Wavy Divider to Výsledky -->
     <div class="hero-wave">
       <svg viewBox="0 0 1440 70" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,24 C150,60 350,-10 550,30 C750,70 950,10 1150,40 C1300,60 1400,25 1440,30 V70 H0 Z" fill="#ffffff">
+        <path d="M0,24 C150,60 350,-10 550,30 C750,70 950,10 1150,40 C1300,60 1400,25 1440,30 V70 H0 Z" class="wave-fill-off-white">
         </path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- SECTION: Výsledky voleb (Theme Off-White) -->
+  <section class="section theme-off-white" id="vysledky">
+    <div class="container">
+      <div class="vysledky-header reveal">
+        <h2>DĚKUJEME ZA VAŠE HLASY</h2>
+        <div class="vysledky-pill-wrap">
+          <div class="vysledky-pill">7,51 % · 2 653 HLASŮ</div>
+        </div>
+      </div>
+
+      <div class="vysledky-grid">
+        <!-- 1. Poděkování -->
+        <div class="vysledky-card reveal">
+          <p class="vysledky-card-text">
+            Volby jsou za námi. Předně bychom vám chtěli poděkovat za neuvěřitelnou podporu, kterou jste nám dali. Na hlasy jsme dosáhli lepšího výsledku než minule, ale na celkový úspěch to nestačilo.
+          </p>
+        </div>
+
+        <!-- 2. Soňa Peprlová -->
+        <div class="vysledky-card reveal">
+          <p class="vysledky-card-text">
+            V zastupitelstvu nás bude 4 roky reprezentovat nejzkušenější z nás – <strong>Soňa Peprlová</strong>. Přejeme jí hodně sil do náročné práce, která ji čeká.
+          </p>
+          <div class="vysledky-rep-badge">
+            <img src="assets/1_Peprlova.png" alt="Soňa Peprlová" class="vysledky-rep-img" loading="lazy" decoding="async">
+            <div class="vysledky-rep-info">
+              <span class="vysledky-rep-name">Soňa Peprlová</span>
+              <span class="vysledky-rep-role">Zvolená zastupitelka města</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Gratulace vítězům -->
+        <div class="vysledky-card reveal">
+          <p class="vysledky-card-text">
+            Za naše sdružení chceme pogratulovat vítězům voleb. Město jim předáváme ve skvělé kondici a budeme jim tvrdou, ale férovou opozicí. Dohlédneme na to, aby Jaroměřicko nestagnovalo, dotahovalo klíčové projekty a aby nová rada města při svém rozhodování nezapomínala na vás, na občany.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wavy Divider to Program -->
+    <div class="section-wave">
+      <svg viewBox="0 0 1440 70" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,24 C150,60 350,-10 550,30 C750,70 950,10 1150,40 C1300,60 1400,25 1440,30 V70 H0 Z"
+          class="wave-fill-white"></path>
       </svg>
     </div>
   </section>
@@ -447,7 +498,7 @@
           </div>
           <div class="candidate-info">
             <div class="candidate-name">Soňa Peprlová</div>
-            <div class="candidate-meta">62 let · Učitelka MŠ · Zastupitelka a radní města</div>
+            <div class="candidate-meta">62 let · Učitelka MŠ · Zvolená zastupitelka města</div>
           </div>
         </div>
 
@@ -475,7 +526,7 @@
           </div>
           <div class="candidate-info">
             <div class="candidate-name">František Petrů</div>
-            <div class="candidate-meta">55 let · Vedoucí týmu · Zastupitel města</div>
+            <div class="candidate-meta">55 let · Vedoucí týmu</div>
           </div>
         </div>
 
@@ -803,17 +854,17 @@
       </div>
     </div>
 
-    <!-- Wavy Divider to Odpocet -->
+    <!-- Wavy Divider to Footer -->
     <div class="section-wave">
       <svg viewBox="0 0 1440 70" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0,24 C150,60 350,-10 550,30 C750,70 950,10 1150,40 C1300,60 1400,25 1440,30 V70 H0 Z"
-          class="wave-fill-dark-gray"></path>
+          class="wave-fill-dark"></path>
       </svg>
     </div>
   </section>
 
-  <!-- SECTION: Odpočet (Theme Dark Gray) -->
-  <section class="section theme-dark-gray" id="odpocet">
+  <!-- SECTION: Odpočet (Hidden post-election) -->
+  <section class="section theme-dark-gray" id="odpocet" style="display: none;">
     <div class="container" style="text-align: center;">
       <div class="countdown-container reveal"
         style="margin: 0 auto; background: transparent; border: none; padding: 0;">

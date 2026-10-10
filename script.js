@@ -47,7 +47,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (jakHlasovatEl) jakHlasovatEl.style.display = '';
       if (waveDividerEl) waveDividerEl.style.display = '';
-      jakHlasovatNavLinks.forEach(link => link.style.display = '');
+      jakHlasovatNavLinks.forEach(link => {
+        link.style.display = '';
+        if (link.parentElement && link.parentElement.tagName === 'LI') {
+          link.parentElement.style.display = '';
+        }
+      });
+
+      const odpocetEl = document.getElementById('odpocet');
+      if (odpocetEl) {
+        odpocetEl.style.display = '';
+        odpocetEl.classList.add('has-wave');
+        odpocetEl.classList.remove('is-ended');
+      }
+
+      const letakWavePath = document.querySelector('#letak .section-wave path');
+      if (letakWavePath) {
+        letakWavePath.setAttribute('class', 'wave-fill-dark-gray');
+      }
 
     } else if (now >= electionStartDate && now < electionEndDate) {
       // PHASE 2: During elections (Oct 9 14:00 - Oct 10 14:00)
@@ -64,25 +81,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (jakHlasovatEl) jakHlasovatEl.style.display = '';
       if (waveDividerEl) waveDividerEl.style.display = '';
-      jakHlasovatNavLinks.forEach(link => link.style.display = '');
+      jakHlasovatNavLinks.forEach(link => {
+        link.style.display = '';
+        if (link.parentElement && link.parentElement.tagName === 'LI') {
+          link.parentElement.style.display = '';
+        }
+      });
+
+      const odpocetEl = document.getElementById('odpocet');
+      if (odpocetEl) {
+        odpocetEl.style.display = '';
+        odpocetEl.classList.add('has-wave');
+        odpocetEl.classList.remove('is-ended');
+      }
+
+      const letakWavePath = document.querySelector('#letak .section-wave path');
+      if (letakWavePath) {
+        letakWavePath.setAttribute('class', 'wave-fill-dark-gray');
+      }
 
     } else {
       // PHASE 3: After elections (Oct 10 14:00 onward)
       if (titleEl) titleEl.style.display = 'none';
       if (gridEl) gridEl.style.display = 'none';
 
-      if (!msgEl) {
-        msgEl = document.createElement('div');
-        msgEl.id = 'election-message';
-        msgEl.className = 'election-banner-message';
-        if (containerEl) containerEl.appendChild(msgEl);
+      if (msgEl) {
+        msgEl.remove();
       }
-      msgEl.textContent = 'Děkujeme za vaše hlasy!';
 
       // Hide voting guide section, wave divider, and nav links
       if (jakHlasovatEl) jakHlasovatEl.style.display = 'none';
       if (waveDividerEl) waveDividerEl.style.display = 'none';
-      jakHlasovatNavLinks.forEach(link => link.style.display = 'none');
+      jakHlasovatNavLinks.forEach(link => {
+        link.style.display = 'none';
+        if (link.parentElement && link.parentElement.tagName === 'LI') {
+          link.parentElement.style.display = 'none';
+        }
+      });
+
+      const odpocetEl = document.getElementById('odpocet');
+      if (odpocetEl) {
+        odpocetEl.style.display = 'none';
+        odpocetEl.classList.remove('has-wave');
+      }
+
+      const letakWavePath = document.querySelector('#letak .section-wave path');
+      if (letakWavePath) {
+        letakWavePath.setAttribute('class', 'wave-fill-dark');
+      }
     }
   }
 
