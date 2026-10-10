@@ -1,85 +1,6 @@
 // Interactive Script for ZA JAROMĚŘICE Website
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 0. Statement Modal (Antikampaň)
-  const statementModal = document.getElementById('statement-modal');
-  const statementBackdrop = document.getElementById('statement-modal-backdrop');
-  const statementCloseBtn = document.getElementById('statement-modal-close');
-  const statementOpenWebBtn = document.getElementById('statement-open-web-btn');
-  const statementAlertReopenBtn = document.getElementById('statement-alert-reopen-btn');
-
-  function openStatementModal() {
-    if (!statementModal) return;
-    statementModal.classList.add('is-open');
-    statementModal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('modal-open');
-    document.documentElement.classList.add('modal-open');
-  }
-
-  function closeStatementModal() {
-    if (!statementModal) return;
-    document.documentElement.classList.remove('statement-first-visit');
-    document.documentElement.classList.remove('modal-open');
-    statementModal.classList.remove('is-open');
-    statementModal.setAttribute('aria-hidden', 'true');
-    const flyer = document.getElementById('flyer-modal');
-    if (!flyer || !flyer.classList.contains('is-open')) {
-      document.body.classList.remove('modal-open');
-      document.documentElement.classList.remove('modal-open');
-    }
-  }
-
-  window.openStatementModal = openStatementModal;
-  window.closeStatementModal = closeStatementModal;
-
-  // Prevent wheel and touch scrolling outside modal dialog content
-  if (statementModal) {
-    const isInsideDialog = (target) => {
-      const dialog = statementModal.querySelector('.statement-modal-dialog');
-      return dialog && dialog.contains(target);
-    };
-
-    statementModal.addEventListener('wheel', (e) => {
-      if (!isInsideDialog(e.target)) {
-        e.preventDefault();
-      }
-    }, { passive: false });
-
-    statementModal.addEventListener('touchmove', (e) => {
-      if (!isInsideDialog(e.target)) {
-        e.preventDefault();
-      }
-    }, { passive: false });
-  }
-
-  // Support direct URL parameters/hashes for statement or web bypass
-  try {
-    const urlParams = new URLSearchParams(window.location.search);
-    const hash = (window.location.hash || '').toLowerCase();
-    const isSkipUrl = hash === '#web' || hash === '#domu' || hash === '#uvod' || hash === '#bez-vzkazu' || urlParams.has('web') || urlParams.has('skip');
-
-    if (isSkipUrl) {
-      closeStatementModal();
-    } else if (urlParams.has('statement') || urlParams.has('vyjadreni') || hash === '#vyjadreni' || hash === '#statement') {
-      openStatementModal();
-    }
-  } catch (e) {}
-
-  if (statementCloseBtn) {
-    statementCloseBtn.addEventListener('click', closeStatementModal);
-  }
-  if (statementOpenWebBtn) {
-    statementOpenWebBtn.addEventListener('click', closeStatementModal);
-  }
-  if (statementBackdrop) {
-    statementBackdrop.addEventListener('click', closeStatementModal);
-  }
-  if (statementAlertReopenBtn) {
-    statementAlertReopenBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openStatementModal();
-    });
-  }
 
   // 1. Election Countdown & Post-Election Dynamic States
   // Start: October 9, 2026, 14:00 CEST
@@ -393,15 +314,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!flyerModal) return;
     flyerModal.classList.remove('is-open');
     flyerModal.setAttribute('aria-hidden', 'true');
-    const statement = document.getElementById('statement-modal');
-    const statementIsOpen = statement && (
-      statement.classList.contains('is-open') ||
-      document.documentElement.classList.contains('statement-first-visit')
-    );
-    if (!statementIsOpen) {
-      document.body.classList.remove('modal-open');
-      document.documentElement.classList.remove('modal-open');
-    }
+    document.body.classList.remove('modal-open');
+    document.documentElement.classList.remove('modal-open');
 
     const targetY = savedFlyerScrollY;
     if (typeof targetY === 'number' && targetY > 50) {
@@ -572,38 +486,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Keyboard Navigation
   window.addEventListener('keydown', (e) => {
-    const isStatementOpen = statementModal && (
-      statementModal.classList.contains('is-open') ||
-      document.documentElement.classList.contains('statement-first-visit')
-    );
-
-    if (isStatementOpen) {
-      if (e.key === 'Escape') {
-        closeStatementModal();
-        return;
-      }
-      const scrollKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
-      if (scrollKeys.includes(e.key)) {
-        const dialogBody = statementModal.querySelector('.statement-modal-body');
-        if (dialogBody) {
-          if (e.key === 'ArrowDown') {
-            dialogBody.scrollTop += 60;
-            e.preventDefault();
-          } else if (e.key === 'ArrowUp') {
-            dialogBody.scrollTop -= 60;
-            e.preventDefault();
-          } else if (e.key === 'PageDown' || e.key === ' ') {
-            dialogBody.scrollTop += 260;
-            e.preventDefault();
-          } else if (e.key === 'PageUp') {
-            dialogBody.scrollTop -= 260;
-            e.preventDefault();
-          }
-        }
-      }
-      return;
-    }
-
     if (e.key === 'Escape') {
       if (flyerModal && flyerModal.classList.contains('is-open')) {
         closeFlyerModal();
