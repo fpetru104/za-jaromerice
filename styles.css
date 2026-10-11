@@ -738,9 +738,9 @@ header.header {
    Results Section (Výsledky voleb)
    ========================================================================== */
 .vysledky-header {
-  text-align: center;
-  max-width: 860px;
-  margin: 0 auto 2.5rem;
+  text-align: left;
+  max-width: 980px;
+  margin: 0 0 2rem 0;
 }
 
 .vysledky-header h2 {
@@ -753,7 +753,7 @@ header.header {
 
 .vysledky-pill-wrap {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin: 1.35rem 0 0.5rem;
 }
@@ -784,8 +784,20 @@ header.header {
 }
 
 .vysledky-text-wrapper {
-  max-width: 780px;
-  margin: 2.25rem auto 0;
+  max-width: 980px;
+  margin: 0;
+}
+
+.vysledky-row {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.vysledky-row .vysledky-text {
+  flex: 1;
+  margin-bottom: 0;
 }
 
 .vysledky-text {
@@ -814,12 +826,13 @@ header.header {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin: 2.25rem 0 2.5rem 0;
-  width: 100%;
+  width: 250px;
+  flex-shrink: 0;
+  margin: 0;
   background-color: #ffffff;
   border: 1px solid var(--color-gray-light);
   border-radius: 18px;
-  padding: 2.25rem 1.75rem;
+  padding: 1.6rem 1.25rem;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -828,6 +841,24 @@ header.header {
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
   border-color: #d1d1d6;
+}
+
+@media (max-width: 859px) {
+  .vysledky-row {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .vysledky-row .vysledky-text {
+    margin-bottom: 0;
+  }
+
+  .vysledky-rep-badge {
+    width: 100%;
+    margin: 0.25rem 0;
+    padding: 2rem 1.5rem;
+  }
 }
 
 .vysledky-rep-img {
